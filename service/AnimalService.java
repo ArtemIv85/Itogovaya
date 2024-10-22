@@ -3,10 +3,7 @@ package service;
 import Model.Animal;
 import Model.db.DataBase;
 import Model.db.PetInDb;
-import Model.impl.Cat;
-import Model.impl.Dog;
-import Model.impl.Hamster;
-import Model.impl.Horse;
+import Model.impl.*;
 import controller.Counter;
 import view.menu;
 
@@ -82,7 +79,36 @@ public class AnimalService {
 
                 System.out.println(DataBase.PetsDataBase.toString());
             }
+            case 5 -> {// Добавляем Верблюд
+                System.out.println("Введите кличку Верблюда:");
+                String name = scanner.nextLine();
 
+                new Counter().Add();
+                System.out.println("Выберете навыки животного");
+
+                List<String> commands = new ArrayList<>();//создаем список команд
+                commands = AddCommands(commands); //заполняем список команд
+                Animal animal1 = new Camel(Counter.contpets, name,"Верблюд");//создаем кошку
+                PetInDb pet = new PetInDb(animal1, commands);//зоздаем запись кошки для базы данных
+                DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
+
+                System.out.println(DataBase.PetsDataBase.toString());
+            }
+            case 6 -> {// Добавляем Осла
+                System.out.println("Введите кличку Осла:");
+                String name = scanner.nextLine();
+
+                new Counter().Add();
+                System.out.println("Выберете навыки животного");
+
+                List<String> commands = new ArrayList<>();//создаем список команд
+                commands = AddCommands(commands); //заполняем список команд
+                Animal animal1 = new Donkey(Counter.contpets, name,"Осел");//создаем кошку
+                PetInDb pet = new PetInDb(animal1, commands);//зоздаем запись кошки для базы данных
+                DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
+
+                System.out.println(DataBase.PetsDataBase.toString());
+            }
 
         }
         return null;
