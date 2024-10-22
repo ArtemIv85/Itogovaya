@@ -1,8 +1,9 @@
 package Model.impl;
 
 public class Hamster extends HomeAnimal{
-    public Hamster(int id, String name){
+    private static String Animaltype = "Хомяк";
+    public Hamster(int id, String name,String type){
 
-        super(id, name);
+        super(id, name,type);
     }
 }

@@ -16,9 +16,6 @@ public class PetInDb {
 
     @Override
     public String toString() {
-        return "PetInDb{" +
-                "Pet=" + Pet +
-                ", comonds=" + comonds +
-                "} \n";
+        return "PetInDb{"+"Животное=" + Pet +", comonds=" + comonds + "} \n";
     }
 }

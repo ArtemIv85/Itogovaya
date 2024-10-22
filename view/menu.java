@@ -1,6 +1,7 @@
 package view;
 
 import Model.Animal;
+import Model.db.DataBase;
 import Model.impl.*;
 
 import java.util.Scanner;
@@ -22,7 +23,7 @@ public class menu {
             switch (scanner.nextInt()) {
                 case 1 -> new CreatAnimalMenu().start();
                 //case 2 -> getById();
-                //case 3 -> getAllStudents();
+                case 3 -> System.out.println(DataBase.PetsDataBase.toString());
                 //case 4 -> new StudentGroupView().start();
                 //case 5 -> System.out.println(DataBase.studentGroups);
                 case 6 -> System.exit(0);// выход из приложения
@@ -34,8 +35,6 @@ public class menu {
 
 
 
-        Animal cat1 = new Cat(1, "Мурка");
-        Animal cat2 = new Cat(2, "Барсик");
 
 
     /*

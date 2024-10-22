@@ -1,7 +1,8 @@
 package Model.impl;
 
 public class Horse extends PackedAnimal{
-    public Horse(int id, String name) {
-        super(id, name);
+    private static String Animaltype = "Лошадь";
+    public Horse(int id, String name, String type) {
+        super(id, name, type);
     }
 }

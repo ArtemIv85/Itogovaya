@@ -11,7 +11,7 @@ public class CreatAnimalMenu {
 
         Scanner scanner = new Scanner(System.in);
         while (true) {
-
+            System.out.println("Кого добавляем?");
             System.out.println("1 - Кошка");
             System.out.println("2 - Собака");
             System.out.println("3 - Хомяк");
@@ -21,12 +21,12 @@ public class CreatAnimalMenu {
             System.out.println("7 - Обратно");
 
             switch (scanner.nextInt()) {
-                case 1 -> new AnimalService().CreateAnimal(1,"Мурка",1);
-                //case 2 -> getById();
-                //case 3 -> getAllStudents();
-                //case 4 -> new StudentGroupView().start();
-                //case 5 -> System.out.println(DataBase.studentGroups);
-               // case 6 -> System.exit(0);// выход из приложения
+                case 1 -> new AnimalService().CreateAnimal(1);
+                case 2 -> new AnimalService().CreateAnimal(2);
+                case 3 -> new AnimalService().CreateAnimal(3);
+                case 4 -> new AnimalService().CreateAnimal(4);
+                case 5 -> new AnimalService().CreateAnimal(5);
+                case 6 -> new AnimalService().CreateAnimal(6);
                 case 7 -> new menu().start();// выход из приложения
 
                 default -> System.out.println("Операция не поддерживается");
