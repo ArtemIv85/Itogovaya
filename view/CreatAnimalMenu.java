@@ -31,7 +31,7 @@ public class CreatAnimalMenu {
 
                 default -> System.out.println("Операция не поддерживается");
             }
-            System.out.println();
+
         }
 
     }

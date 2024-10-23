@@ -15,108 +15,115 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class AnimalService {
 
-    public Animal CreateAnimal(int animalclass) {
+    public void CreateAnimal(int animalclass) {
         Scanner scanner = new Scanner(System.in);
+
         switch (animalclass) {
 
             case 1 -> {//Добавляем кошку
                 System.out.println("Введите кличку Кошки:");
                 String name = scanner.nextLine();
 
-                new Counter().Add();
+
                 System.out.println("Выберете навыки животного");
 
                 List<String> commands = new ArrayList<>();//создаем список команд
                 commands = AddCommands(commands); //заполняем список команд
-                Animal animal1 = new Cat(Counter.contpets, name,"Кошка");//создаем кошку
+                Animal animal1 = new Cat(Counter.contpets, name,"1");//создаем кошку
                 PetInDb pet = new PetInDb(animal1, commands);//зоздаем запись кошки для базы данных
                 DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
 
                 System.out.println("Вы добавили: ");
                 System.out.println(pet);
+                new Counter().Add();
             }
             case 2 -> {// Добавляем собаку
                 System.out.println("Введите кличку Собаки:");
                 String name = scanner.nextLine();
 
-                new Counter().Add();
+
                 System.out.println("Выберете навыки животного");
 
                 List<String> commands = new ArrayList<>();//создаем список команд
                 commands = AddCommands(commands); //заполняем список команд
-                Animal animal1 = new Dog(Counter.contpets, name,"Собака");//создаем Собаку
+                Animal animal1 = new Dog(Counter.contpets, name,"2");//создаем Собаку
                 PetInDb pet = new PetInDb(animal1, commands);//зоздаем запись кошки для базы данных
                 DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
                 System.out.println("Вы добавили: ");
                 System.out.println(pet);
+                new Counter().Add();
             }
             case 3 -> {// Добавляем Хомяка
                 System.out.println("Введите кличку Хомяка:");
                 String name = scanner.nextLine();
 
-                new Counter().Add();
+
                 System.out.println("Выберете навыки животного");
 
                 List<String> commands = new ArrayList<>();//создаем список команд
                 commands = AddCommands(commands); //заполняем список команд
-                Animal animal1 = new Hamster(Counter.contpets, name,"Хомяк");//создаем Хомяка
+                Animal animal1 = new Hamster(Counter.contpets, name,"3");//создаем Хомяка
                 PetInDb pet = new PetInDb(animal1, commands);//зоздаем запись кошки для базы данных
                 DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
 
                 System.out.println("Вы добавили: ");
                 System.out.println(pet);
+                new Counter().Add();
             }
             case 4 -> {// Добавляем Лошадь
                 System.out.println("Введите кличку Лошади:");
                 String name = scanner.nextLine();
 
-                new Counter().Add();
+
                 System.out.println("Выберете навыки животного");
 
                 List<String> commands = new ArrayList<>();//создаем список команд
                 commands = AddCommands(commands); //заполняем список команд
-                Animal animal1 = new Horse(Counter.contpets, name,"Лошадь");//создаем Лошадь
+                Animal animal1 = new Horse(Counter.contpets, name,"4");//создаем Лошадь
                 PetInDb pet = new PetInDb(animal1, commands);//зоздаем запись кошки для базы данных
                 DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
 
                 System.out.println("Вы добавили: ");
                 System.out.println(pet);
+                new Counter().Add();
             }
             case 5 -> {// Добавляем Верблюд
                 System.out.println("Введите кличку Верблюда:");
                 String name = scanner.nextLine();
 
-                new Counter().Add();
+
                 System.out.println("Выберете навыки животного");
 
                 List<String> commands = new ArrayList<>();//создаем список команд
                 commands = AddCommands(commands); //заполняем список команд
-                Animal animal1 = new Camel(Counter.contpets, name,"Верблюд");//создаем Верблюда
+                Animal animal1 = new Camel(Counter.contpets, name,"5");//создаем Верблюда
                 PetInDb pet = new PetInDb(animal1, commands);//зоздаем запись кошки для базы данных
                 DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
 
                 System.out.println("Вы добавили: ");
                 System.out.println(pet);
+                new Counter().Add();
             }
             case 6 -> {// Добавляем Осла
                 System.out.println("Введите кличку Осла:");
                 String name = scanner.nextLine();
 
-                new Counter().Add();
+
                 System.out.println("Выберете навыки животного");
 
                 List<String> commands = new ArrayList<>();//создаем список команд
                 commands = AddCommands(commands); //заполняем список команд
-                Animal animal1 = new Donkey(Counter.contpets, name,"Осел");//создаем Осла
+                Animal animal1 = new Donkey(Counter.contpets, name,"6");//создаем Осла
                 PetInDb pet = new PetInDb(animal1, commands);//зоздаем запись кошки для базы данных
                 DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
                 System.out.println("Вы добавили: ");
                 System.out.println(pet);
+                new Counter().Add();
             }
 
         }
-        new Counter().Add();
-        return null;
+
+
 
     }
 

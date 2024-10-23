@@ -1,9 +1,6 @@
 package Model.db;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -82,39 +79,48 @@ int id  String name   String Type              ArrayList<String>
             throw new RuntimeException(e);
         }
 
-
-
-
     }// конец LoadDB
 
-    /*
-    public static final List<Teacher> teachersDB = new ArrayList<>();
-    public static int teacherLastId=0;
-
-    public static final List<StudentGroup> studentGroups = new ArrayList<>();
-*/
 
 
-    public static void fillDB(){
-        String[] commanArr = {"Сидеть","Лежать","Ждать"};
-        //HomeAnimals h1 = new HomeAnimals(animalLastId+1,"Шарик","Домашнее животное", Arrays.asList(commanArr));
+
+    public static void SaveDB(){
 
 
-/*
-        Teacher teacher = new Teacher(1, "Вася", "Иванов");
-        teachersDB.add(teacher);
-        teacherLastId = teacherLastId+1;
-        Teacher teacher2 = new Teacher(2, "Самуил", "Яковлевич");
-        teachersDB.add(teacher2);
-        teacherLastId = teacherLastId+1;
+            File file = new File("DB.txt");
+            file.delete();
+        try {
+            if (file.createNewFile()) {
+                System.out.println("Файл создан");
+                FileWriter writer = new FileWriter("DB.txt");
+
+                for (PetInDb pet:DataBase.PetsDataBase){
+                    String commands="";
+                    for (String com:pet.comonds){
+                        commands=commands+com+",";
+                    }
+                    commands=commands.substring(0,commands.length()-1);
+                    writer.write(pet.getPet().getId()+"/"
+                                    +pet.getPet().getName()+"/"
+                                    +pet.getPet().getAnimalType()+"/"
+                                    +commands
+                                    +"\n"
+                                );
+                }
+                writer.close();
+
+            } else {
+                System.out.println("Файл занят другим приложением");
+            }
+        } catch (IOException e) {
+            System.out.println("Ошибка при создании файла");
+            e.printStackTrace();
+        }
 
 
-        Student s1 = new Student(1, "Рикон", "Старк");
-        studentsDB.add(s1);
-        studentLastId=studentLastId+1;
-        Student s2 = new Student(2, "Джофри", "Ланистер");
-        studentsDB.add(s2);
-        studentLastId=studentLastId+1;*/
+
+
+
     }
 
 }

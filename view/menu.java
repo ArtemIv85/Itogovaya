@@ -21,7 +21,8 @@ public class menu {
             System.out.println("3 - распечатать список всех животных");
             System.out.println("4 - Обучить новым командам");
             System.out.println("5 - Удалить команду у животного");
-            System.out.println("6 - выход");
+            System.out.println("6 - Сохранить изменения в файле");
+            System.out.println("7 - выход");
 
             switch (scanner.nextInt()) {
                 case 1 -> new CreatAnimalMenu().start();
@@ -29,7 +30,8 @@ public class menu {
                 case 3 -> System.out.println(DataBase.PetsDataBase.toString());
                 //case 4 -> new StudentGroupView().start();
                 //case 5 -> System.out.println(DataBase.studentGroups);
-                case 6 -> System.exit(0);// выход из приложения
+                case 6 -> DataBase.SaveDB();
+                case 7 -> System.exit(0);// выход из приложения
 
                 default -> System.out.println("Операция не поддерживается");
             }

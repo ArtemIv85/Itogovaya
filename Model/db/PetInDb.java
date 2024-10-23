@@ -18,4 +18,12 @@ public class PetInDb {
     public String toString() {
         return "PetInDb{"+"Животное=" + Pet +", comonds=" + comonds + "} \n";
     }
+
+    public Animal getPet() {
+        return Pet;
+    }
+
+    public List<String> getComonds() {
+        return comonds;
+    }
 }
