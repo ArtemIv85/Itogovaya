@@ -32,7 +32,8 @@ public class AnimalService {
                 PetInDb pet = new PetInDb(animal1, commands);//зоздаем запись кошки для базы данных
                 DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
 
-                System.out.println(DataBase.PetsDataBase.toString());
+                System.out.println("Вы добавили: ");
+                System.out.println(pet);
             }
             case 2 -> {// Добавляем собаку
                 System.out.println("Введите кличку Собаки:");
@@ -43,11 +44,11 @@ public class AnimalService {
 
                 List<String> commands = new ArrayList<>();//создаем список команд
                 commands = AddCommands(commands); //заполняем список команд
-                Animal animal1 = new Dog(Counter.contpets, name,"Собака");//создаем кошку
+                Animal animal1 = new Dog(Counter.contpets, name,"Собака");//создаем Собаку
                 PetInDb pet = new PetInDb(animal1, commands);//зоздаем запись кошки для базы данных
                 DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
-
-                System.out.println(DataBase.PetsDataBase.toString());
+                System.out.println("Вы добавили: ");
+                System.out.println(pet);
             }
             case 3 -> {// Добавляем Хомяка
                 System.out.println("Введите кличку Хомяка:");
@@ -58,11 +59,12 @@ public class AnimalService {
 
                 List<String> commands = new ArrayList<>();//создаем список команд
                 commands = AddCommands(commands); //заполняем список команд
-                Animal animal1 = new Hamster(Counter.contpets, name,"Хомяк");//создаем кошку
+                Animal animal1 = new Hamster(Counter.contpets, name,"Хомяк");//создаем Хомяка
                 PetInDb pet = new PetInDb(animal1, commands);//зоздаем запись кошки для базы данных
                 DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
 
-                System.out.println(DataBase.PetsDataBase.toString());
+                System.out.println("Вы добавили: ");
+                System.out.println(pet);
             }
             case 4 -> {// Добавляем Лошадь
                 System.out.println("Введите кличку Лошади:");
@@ -73,11 +75,12 @@ public class AnimalService {
 
                 List<String> commands = new ArrayList<>();//создаем список команд
                 commands = AddCommands(commands); //заполняем список команд
-                Animal animal1 = new Horse(Counter.contpets, name,"Лошадь");//создаем кошку
+                Animal animal1 = new Horse(Counter.contpets, name,"Лошадь");//создаем Лошадь
                 PetInDb pet = new PetInDb(animal1, commands);//зоздаем запись кошки для базы данных
                 DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
 
-                System.out.println(DataBase.PetsDataBase.toString());
+                System.out.println("Вы добавили: ");
+                System.out.println(pet);
             }
             case 5 -> {// Добавляем Верблюд
                 System.out.println("Введите кличку Верблюда:");
@@ -88,11 +91,12 @@ public class AnimalService {
 
                 List<String> commands = new ArrayList<>();//создаем список команд
                 commands = AddCommands(commands); //заполняем список команд
-                Animal animal1 = new Camel(Counter.contpets, name,"Верблюд");//создаем кошку
+                Animal animal1 = new Camel(Counter.contpets, name,"Верблюд");//создаем Верблюда
                 PetInDb pet = new PetInDb(animal1, commands);//зоздаем запись кошки для базы данных
                 DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
 
-                System.out.println(DataBase.PetsDataBase.toString());
+                System.out.println("Вы добавили: ");
+                System.out.println(pet);
             }
             case 6 -> {// Добавляем Осла
                 System.out.println("Введите кличку Осла:");
@@ -103,14 +107,15 @@ public class AnimalService {
 
                 List<String> commands = new ArrayList<>();//создаем список команд
                 commands = AddCommands(commands); //заполняем список команд
-                Animal animal1 = new Donkey(Counter.contpets, name,"Осел");//создаем кошку
+                Animal animal1 = new Donkey(Counter.contpets, name,"Осел");//создаем Осла
                 PetInDb pet = new PetInDb(animal1, commands);//зоздаем запись кошки для базы данных
                 DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
-
-                System.out.println(DataBase.PetsDataBase.toString());
+                System.out.println("Вы добавили: ");
+                System.out.println(pet);
             }
 
         }
+        new Counter().Add();
         return null;
 
     }
@@ -129,7 +134,7 @@ public class AnimalService {
 
             switch (scanner.nextInt()) {
                 case 1 -> commands.add(SetCommand());
-                //case 2 -> //Удаление команд
+                case 2 -> RemoveCommand(commands); //Удаление команд
 
                 case 3 -> i=0; // выход из приложения
                 }
@@ -146,6 +151,28 @@ public class AnimalService {
             return scanner.nextLine();
         }
 
+        //Функция удаления команды
+        public List<String> RemoveCommand (List<String> commands){
+            //Вывод списка команд с индексами
+            Scanner scanner = new Scanner(System.in);
+            int index = -1;
+            for (int i=0;i<commands.size();i++){
+                System.out.println(i+" - "+commands.get(i));
+            }
+
+            System.out.println("Укажите номер команды которую надо удалить");
+            try{
+                index = scanner.nextInt();
+                if (index>=0 && index<commands.size()){
+                    commands.remove(index);
+                }
+                else System.out.println("Неправильный номер команды");
+            } catch (Exception e) {
+                //throw new RuntimeException(e+"Неправильный номер команды");
+                System.out.println("Неправильный номер команды");
+            }
 
 
+        return commands;
+        }
     }

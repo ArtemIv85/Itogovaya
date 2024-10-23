@@ -3,6 +3,7 @@ package view;
 import Model.Animal;
 import Model.db.DataBase;
 import Model.impl.*;
+import controller.Counter;
 
 import java.util.Scanner;
 
@@ -10,6 +11,8 @@ public class menu {
 
     public void start() {
 
+
+        System.out.println("Количество животных в базе: "+ Counter.contpets);
         Scanner scanner = new Scanner(System.in);
         while (true) {
 

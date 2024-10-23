@@ -1,7 +1,9 @@
+import Model.db.DataBase;
 import view.menu;
 
 public class Main {
     public static void main(String[] args) {
-new menu().start();
+        DataBase.LoadDB();
+        new menu().start();
     }
 }
