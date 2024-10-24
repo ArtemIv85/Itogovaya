@@ -68,6 +68,7 @@ int id  String name   String Type              ArrayList<String>
 
 
             }
+            animalLastId=maxId;
             System.out.println("Загружено животных из базы: "+Counter.contpets);
             reader.close();
 

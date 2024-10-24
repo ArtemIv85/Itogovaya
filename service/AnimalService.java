@@ -17,7 +17,7 @@ public class AnimalService {
 
     public void CreateAnimal(int animalclass) {
         Scanner scanner = new Scanner(System.in);
-
+        int id = DataBase.animalLastId+1;
         switch (animalclass) {
 
             case 1 -> {//Добавляем кошку
@@ -29,7 +29,7 @@ public class AnimalService {
 
                 List<String> commands = new ArrayList<>();//создаем список команд
                 commands = AddCommands(commands); //заполняем список команд
-                Animal animal1 = new Cat(Counter.contpets, name,"1");//создаем кошку
+                Animal animal1 = new Cat(id, name,"1");//создаем кошку
                 PetInDb pet = new PetInDb(animal1, commands);//зоздаем запись кошки для базы данных
                 DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
 
@@ -46,7 +46,7 @@ public class AnimalService {
 
                 List<String> commands = new ArrayList<>();//создаем список команд
                 commands = AddCommands(commands); //заполняем список команд
-                Animal animal1 = new Dog(Counter.contpets, name,"2");//создаем Собаку
+                Animal animal1 = new Dog(id, name,"2");//создаем Собаку
                 PetInDb pet = new PetInDb(animal1, commands);//зоздаем запись кошки для базы данных
                 DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
                 System.out.println("Вы добавили: ");
@@ -62,7 +62,7 @@ public class AnimalService {
 
                 List<String> commands = new ArrayList<>();//создаем список команд
                 commands = AddCommands(commands); //заполняем список команд
-                Animal animal1 = new Hamster(Counter.contpets, name,"3");//создаем Хомяка
+                Animal animal1 = new Hamster(id, name,"3");//создаем Хомяка
                 PetInDb pet = new PetInDb(animal1, commands);//зоздаем запись кошки для базы данных
                 DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
 
@@ -79,7 +79,7 @@ public class AnimalService {
 
                 List<String> commands = new ArrayList<>();//создаем список команд
                 commands = AddCommands(commands); //заполняем список команд
-                Animal animal1 = new Horse(Counter.contpets, name,"4");//создаем Лошадь
+                Animal animal1 = new Horse(id, name,"4");//создаем Лошадь
                 PetInDb pet = new PetInDb(animal1, commands);//зоздаем запись кошки для базы данных
                 DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
 
@@ -96,7 +96,7 @@ public class AnimalService {
 
                 List<String> commands = new ArrayList<>();//создаем список команд
                 commands = AddCommands(commands); //заполняем список команд
-                Animal animal1 = new Camel(Counter.contpets, name,"5");//создаем Верблюда
+                Animal animal1 = new Camel(id, name,"5");//создаем Верблюда
                 PetInDb pet = new PetInDb(animal1, commands);//зоздаем запись кошки для базы данных
                 DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
 
@@ -113,7 +113,7 @@ public class AnimalService {
 
                 List<String> commands = new ArrayList<>();//создаем список команд
                 commands = AddCommands(commands); //заполняем список команд
-                Animal animal1 = new Donkey(Counter.contpets, name,"6");//создаем Осла
+                Donkey animal1 = new Donkey(id, name,"6");//создаем Осла
                 PetInDb pet = new PetInDb(animal1, commands);//зоздаем запись кошки для базы данных
                 DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
                 System.out.println("Вы добавили: ");
