@@ -126,31 +126,77 @@ public class AnimalService {
 
 
     }
+public void EditAnimal(int petId){
+
+        for (PetInDb pet:DataBase.PetsDataBase){
+            if (pet.getPet().getId()==petId){ //если есть такое животное с указанным ID
+                int i=1;
+                while (i==1) {
+                    Scanner scanner = new Scanner(System.in);
+                    System.out.println("Вы выбрали животное: ID = "+petId+" Имя: "+pet.getPet().getName());
+                    System.out.println("Что нужно сделать?");
+                    System.out.println("1 - Изменить имя");
+                    System.out.println("2 - Добавить или удалить команду");
+                    System.out.println("3 - Закончить");
+
+                    try {
+                        switch (scanner.nextInt()) {
+                            case 1 -> {//изменение имени
+                                System.out.println("Введите новое имя животного");
+                                Scanner scanner1 = new Scanner(System.in);
+                                pet.getPet().setName(scanner1.nextLine());
+                            }
+
+                            case 2 -> { // Изменения списка команд
+                                List<String> petcommands = pet.getCommondsList();
+                                List<String> petA= AddCommands(pet.getCommondsList());
+                                System.out.println(petA);
+                                pet.setComonds(AddCommands(pet.getCommondsList()));
+                            }
+
+                            case 3 -> i = 0; // выход из приложения
+                            default -> System.out.println("Операция не поддерживается");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Операция не поддерживается");
+                    }
+
+                }
+
+
+            }
+        }
+
+}
 
 
     public List<String> AddCommands(List<String> commands){ //функция добавления и удаления команд у животного
 
-        Scanner scanner = new Scanner(System.in);
         int i=1;
         while (i==1) {
+            Scanner scan = new Scanner(System.in);
             System.out.println("Список команд: "+commands.toString());
             System.out.println("1 - Добавить команду");
             System.out.println("2 - Удалить команду");
             System.out.println("3 - Закончить");
 
 
-            switch (scanner.nextInt()) {
-                case 1 -> commands.add(SetCommand());
-                case 2 -> RemoveCommand(commands); //Удаление команд
-
-                case 3 -> i=0; // выход из приложения
-                }
-
-               // default -> System.out.println("Операция не поддерживается");
+            try {
+                switch (scan.nextInt()) {
+                    case 1 -> commands.add(SetCommand());
+                    case 2 -> RemoveCommand(commands); //Удаление команд
+                    case 3 -> i=0; // выход из приложения
+                    default -> System.out.println("Операция не поддерживается");
+               }
+            } catch (Exception e) {
+                System.out.println("Операция не поддерживается");
             }
-            System.out.println();
-        return commands;
+
+
         }
+            System.out.println(commands);
+        return commands;
+        } //End  AddCommands
 
         public String SetCommand(){
             Scanner scanner = new Scanner(System.in);
@@ -175,7 +221,6 @@ public class AnimalService {
                 }
                 else System.out.println("Неправильный номер команды");
             } catch (Exception e) {
-                //throw new RuntimeException(e+"Неправильный номер команды");
                 System.out.println("Неправильный номер команды");
             }
 

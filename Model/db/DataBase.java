@@ -97,7 +97,7 @@ int id  String name   String Type              ArrayList<String>
 
                 for (PetInDb pet:DataBase.PetsDataBase){
                     String commands="";
-                    for (String com:pet.comonds){
+                    for (String com:pet.commondsList){
                         commands=commands+com+",";
                     }
                     commands=commands.substring(0,commands.length()-1);

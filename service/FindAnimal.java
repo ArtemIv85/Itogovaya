@@ -19,9 +19,9 @@ public class FindAnimal {
             }
 
         }
-        else {//Поиск по имени
+        else {//Поиск по имени без учета регистра
             for (PetInDb pet:DataBase.PetsDataBase){
-                if (pet.getPet().getName().contains(Name)){
+                if (pet.getPet().getName().toLowerCase().contains(Name.toLowerCase())){
                     PetList.add(pet);
                     findcount++;
                 }

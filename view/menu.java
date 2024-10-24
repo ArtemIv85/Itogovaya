@@ -4,6 +4,8 @@ import Model.Animal;
 import Model.db.DataBase;
 import Model.impl.*;
 import controller.Counter;
+import service.AnimalService;
+import service.EditAnimalService;
 
 import java.util.Scanner;
 
@@ -12,31 +14,35 @@ public class menu {
     public void start() {
 
 
-        System.out.println("Количество животных в базе: "+ Counter.contpets);
-        Scanner scanner = new Scanner(System.in);
-        while (true) {
+//        System.out.println("Количество животных в базе: "+ Counter.contpets);
+//        //System.out.println(DataBase.PetsDataBase.get(1).getCommondsList().add());
+//        DataBase.PetsDataBase.get(1).AddCommand(1,"sdfsdgsgsdg");
 
+        while (true) {
+            Scanner scanner = new Scanner(System.in);
             System.out.println("1 - Принять животное");
             System.out.println("2 - найти животное по Имени");
             System.out.println("3 - распечатать список всех животных");
-            System.out.println("4 - Обучить новым командам");
-            System.out.println("5 - Удалить команду у животного");
-            System.out.println("6 - Сохранить изменения в файле");
-            System.out.println("7 - Сохранить и выйти");
+            System.out.println("4 - Редактировать животного(Изменить имя и команды");
+            System.out.println("5 - Сохранить изменения в файле");
+            System.out.println("6 - Сохранить и выйти");
 
-            switch (scanner.nextInt()) {
-                case 1 -> new CreatAnimalMenu().start();
-                case 2 -> new FindAnimalMenu().start();
-                case 3 -> System.out.println(DataBase.PetsDataBase.toString());
-                //case 4 -> new StudentGroupView().start();
-                //case 5 -> System.out.println(DataBase.studentGroups);
-                case 6 -> DataBase.SaveDB();
-                case 7 -> {
-                    DataBase.SaveDB();
-                    System.exit(0);// выход из приложения
+            try {
+                switch (scanner.nextInt()) {
+                    case 1 -> new CreatAnimalMenu().start();
+                    case 2 -> new FindAnimalMenu().start();
+                    case 3 -> System.out.println(DataBase.PetsDataBase.toString());
+                    case 4 -> new EditAnimalService().start();
+                    case 5 -> DataBase.SaveDB();
+                    case 6 -> {
+                                DataBase.SaveDB();
+                                System.exit(0);// выход из приложения
+                    }
+
+                    default -> System.out.println("Операция не поддерживается");
                 }
-
-                default -> System.out.println("Операция не поддерживается");
+            } catch (Exception e) {
+                System.out.println("Операция не поддерживается");
             }
         }
         }
