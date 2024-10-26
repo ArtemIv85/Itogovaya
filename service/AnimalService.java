@@ -29,8 +29,7 @@ public class AnimalService {
 
                 List<String> commands = new ArrayList<>();//создаем список команд
                 commands = AddCommands(commands); //заполняем список команд
-                Animal animal1 = new Cat(id, name,"1");//создаем кошку
-                PetInDb pet = new PetInDb(animal1, commands);//зоздаем запись кошки для базы данных
+                Animal pet = new Cat(id, name,"1",commands);//создаем кошку
                 DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
 
                 System.out.println("Вы добавили: ");
@@ -46,9 +45,9 @@ public class AnimalService {
 
                 List<String> commands = new ArrayList<>();//создаем список команд
                 commands = AddCommands(commands); //заполняем список команд
-                Animal animal1 = new Dog(id, name,"2");//создаем Собаку
-                PetInDb pet = new PetInDb(animal1, commands);//зоздаем запись кошки для базы данных
+                Animal pet = new Dog(id, name,"2",commands);//создаем Собаку
                 DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
+
                 System.out.println("Вы добавили: ");
                 System.out.println(pet);
                 new Counter().Add();
@@ -62,8 +61,7 @@ public class AnimalService {
 
                 List<String> commands = new ArrayList<>();//создаем список команд
                 commands = AddCommands(commands); //заполняем список команд
-                Animal animal1 = new Hamster(id, name,"3");//создаем Хомяка
-                PetInDb pet = new PetInDb(animal1, commands);//зоздаем запись кошки для базы данных
+                Animal pet = new Hamster(id, name,"3",commands);//создаем Хомяка
                 DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
 
                 System.out.println("Вы добавили: ");
@@ -79,8 +77,7 @@ public class AnimalService {
 
                 List<String> commands = new ArrayList<>();//создаем список команд
                 commands = AddCommands(commands); //заполняем список команд
-                Animal animal1 = new Horse(id, name,"4");//создаем Лошадь
-                PetInDb pet = new PetInDb(animal1, commands);//зоздаем запись кошки для базы данных
+                Animal pet = new Horse(id, name,"4",commands);//создаем Лошадь
                 DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
 
                 System.out.println("Вы добавили: ");
@@ -96,8 +93,7 @@ public class AnimalService {
 
                 List<String> commands = new ArrayList<>();//создаем список команд
                 commands = AddCommands(commands); //заполняем список команд
-                Animal animal1 = new Camel(id, name,"5");//создаем Верблюда
-                PetInDb pet = new PetInDb(animal1, commands);//зоздаем запись кошки для базы данных
+                Animal pet = new Camel(id, name,"5",commands);//создаем Верблюда
                 DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
 
                 System.out.println("Вы добавили: ");
@@ -113,9 +109,9 @@ public class AnimalService {
 
                 List<String> commands = new ArrayList<>();//создаем список команд
                 commands = AddCommands(commands); //заполняем список команд
-                Donkey animal1 = new Donkey(id, name,"6");//создаем Осла
-                PetInDb pet = new PetInDb(animal1, commands);//зоздаем запись кошки для базы данных
+                Donkey pet = new Donkey(id, name,"6",commands);//создаем Осла
                 DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
+
                 System.out.println("Вы добавили: ");
                 System.out.println(pet);
                 new Counter().Add();
@@ -128,12 +124,12 @@ public class AnimalService {
     }
 public void EditAnimal(int petId){
 
-        for (PetInDb pet:DataBase.PetsDataBase){
-            if (pet.getPet().getId()==petId){ //если есть такое животное с указанным ID
+        for (Animal pet:DataBase.PetsDataBase){
+            if (pet.getId()==petId){ //если есть такое животное с указанным ID
                 int i=1;
                 while (i==1) {
                     Scanner scanner = new Scanner(System.in);
-                    System.out.println("Вы выбрали животное: ID = "+petId+" Имя: "+pet.getPet().getName());
+                    System.out.println("Вы выбрали животное: ID = "+petId+" Имя: "+pet.getName());
                     System.out.println("Что нужно сделать?");
                     System.out.println("1 - Изменить имя");
                     System.out.println("2 - Добавить или удалить команду");
@@ -144,14 +140,14 @@ public void EditAnimal(int petId){
                             case 1 -> {//изменение имени
                                 System.out.println("Введите новое имя животного");
                                 Scanner scanner1 = new Scanner(System.in);
-                                pet.getPet().setName(scanner1.nextLine());
+                                pet.setName(scanner1.nextLine());
                             }
 
                             case 2 -> { // Изменения списка команд
-                                List<String> petcommands = pet.getCommondsList();
-                                List<String> petA= AddCommands(pet.getCommondsList());
-                                System.out.println(petA);
-                                pet.setComonds(AddCommands(pet.getCommondsList()));
+                                List<String> petcommands = pet.commands;
+                                pet.commands = AddCommands(petcommands);
+                                System.out.println(pet.commands);
+
                             }
 
                             case 3 -> i = 0; // выход из приложения

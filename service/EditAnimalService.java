@@ -1,5 +1,6 @@
 package service;
 
+import Model.Animal;
 import Model.db.DataBase;
 import Model.db.PetInDb;
 import view.CreatAnimalMenu;
@@ -17,9 +18,9 @@ public class EditAnimalService {
             System.out.println("Укажите ID животного для изменения");
 
                 ID = scanner.nextInt();
-                for (PetInDb pet : DataBase.PetsDataBase) {
-                    if (pet.getPet().getId() == ID) {
-                        System.out.println("Выбрано животное ID: " + ID + " Имя: " + pet.getPet().getName());
+                for (Animal pet : DataBase.PetsDataBase) {
+                    if (pet.getId() == ID) {
+                        System.out.println("Выбрано животное ID: " + ID + " Имя: " + pet.getName());
                         //Scanner sc1 = new Scanner(System.in);
                         System.out.println("1 - Изменить Имя");
                         System.out.println("2 - Добавить команду");
@@ -29,26 +30,26 @@ public class EditAnimalService {
                             case 1 -> {//Изменение имени
                                 Scanner sc2 = new Scanner(System.in);
                                 System.out.println("Введите новое имя животного: ");
-                                pet.getPet().setName(sc2.nextLine());
+                                pet.setName(sc2.nextLine());
                             }
                             case 2 -> {//Добавление команды
-                                System.out.println("Изученные команды: " + pet.getCommondsList());
+                                System.out.println("Изученные команды: " + pet.commands);
 
                                 Scanner sc3 = new Scanner(System.in);
                                 System.out.println("Введите новую команду: ");
-                                pet.getCommondsList().add(sc3.nextLine());
+                                pet.commands.add(sc3.nextLine());
                             }
                             case 3 -> {//Удаление команды
                                 //Вывод изученых команд с нумерацией
                                 int index = -1;
-                                for (int i = 0; i < pet.getCommondsList().size(); i++) {
-                                    System.out.println(i + " - " + pet.getCommondsList().get(i));
+                                for (int i = 0; i < pet.commands.size(); i++) {
+                                    System.out.println(i + " - " + pet.commands.get(i));
                                 }
                                 // конец вывода команд
                                 Scanner sc4 = new Scanner(System.in);
                                 System.out.println("Укажите номер команды, которую надо удалить");
                                 try {
-                                    pet.RemoveCommand(scanner.nextInt());
+                                    pet.commands.remove(scanner.nextInt());
                                 } catch (Exception e) {
                                     System.out.println("Неправильный номер команды");
                                 }

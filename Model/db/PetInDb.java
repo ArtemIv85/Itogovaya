@@ -7,12 +7,9 @@ import java.util.List;
 
 public class PetInDb {
     protected  Animal Pet;
-    protected  List<String> commondsList = new ArrayList<>();
+    public    List<String> commondsList = new ArrayList<>();
 
-    public PetInDb(Animal pet, List<String> comonds) {
-        Pet = pet;
-        this.commondsList = comonds;
-    }
+
 
     @Override
     public String toString() {
@@ -24,7 +21,7 @@ public class PetInDb {
     }
 
     public void AddCommand(String command) {
-        commondsList.addLast(command);
+        commondsList.add(command);
     }
     public void RemoveCommand(int ID){
         commondsList.remove(ID);

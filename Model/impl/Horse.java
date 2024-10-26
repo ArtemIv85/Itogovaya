@@ -1,8 +1,13 @@
 package Model.impl;
 
-public class Horse extends PackedAnimal{
+import Model.Animal;
+
+import java.util.List;
+
+public class Horse extends Animal {
     private static String Animaltype = "Лошадь";
-    public Horse(int id, String name, String type) {
-        super(id, name, type);
+
+    public Horse(int id, String name, String animalType, List<String> commands) {
+        super(id, name, animalType, commands);
     }
 }

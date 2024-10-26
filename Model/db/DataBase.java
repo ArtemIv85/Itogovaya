@@ -11,8 +11,9 @@ import controller.Counter;
 
 //симулирует базу данных
 public class DataBase {
-    public static final List<PetInDb> PetsDataBase = new ArrayList<>();
-    public static int animalLastId=0;
+    public  static List<Animal> PetsDataBase = new ArrayList<>();
+    public  static int animalLastId=0;
+    public static List<Pet> DataList = new ArrayList<>();
 
 /*
 Структура данных
@@ -20,6 +21,21 @@ Pet                                             Commonds (Lis<String>)
 int id  String name   String Type              ArrayList<String>
  */
     public static void LoadDB() {
+
+        Pet dog2 = new Pet();
+        dog2.setId(1);
+        dog2.setName("Песик");
+        dog2.setType("Собака");
+        dog2.AddCommans("Сидеть");
+        DataList.add(dog2);
+        Pet dog3 = new Pet();
+        dog3.setId(1);
+        dog3.setName("Песик");
+        dog3.setType("Собака");
+        dog3.AddCommans("Сидеть");
+        DataList.add(dog3);
+
+
 
         BufferedReader reader = null;
         try {
@@ -37,27 +53,27 @@ int id  String name   String Type              ArrayList<String>
 
                 switch (Integer.parseInt(AnimalType)) {
                     case 1 -> {// 1 - Кошка
-                        PetInDb pet = new PetInDb(new Cat(id,Name,AnimalType),commans);
+                        Animal pet = new Cat(id,Name,AnimalType,commans);
                         DataBase.PetsDataBase.add(pet);
                     }
                     case 2 -> {//2 - Собака
-                        PetInDb pet = new PetInDb(new Dog(id,Name,AnimalType),commans);
+                        Animal pet = new Dog(id,Name,AnimalType,commans);
                         DataBase.PetsDataBase.add(pet);
                     }
                     case 3 -> {// 3 - Хомяк
-                        PetInDb pet = new PetInDb(new Hamster(id,Name,AnimalType),commans);
+                        Animal pet = new Hamster(id,Name,AnimalType,commans);
                         DataBase.PetsDataBase.add(pet);
                     }
                     case 4 -> {//4 - Лошадь
-                        PetInDb pet = new PetInDb(new Horse(id,Name,AnimalType), commans);
+                        Animal pet = new Horse(id,Name,AnimalType,commans);
                         DataBase.PetsDataBase.add(pet);
                     }
                     case 5 -> {// 5 - Верблюд
-                        PetInDb pet = new PetInDb(new Camel(id,Name,AnimalType),commans);
+                        Animal pet = new Camel(id,Name,AnimalType,commans);
                         DataBase.PetsDataBase.add(pet);
                     }
                     case 6 -> { // 6 - Осел
-                        PetInDb pet = new PetInDb(new Donkey(id,Name,AnimalType),commans);
+                        Animal pet = new Donkey(id,Name,AnimalType,commans);
                         DataBase.PetsDataBase.add(pet);
                     }
 
@@ -95,15 +111,15 @@ int id  String name   String Type              ArrayList<String>
                 System.out.println("Файл создан");
                 FileWriter writer = new FileWriter("DB.txt");
 
-                for (PetInDb pet:DataBase.PetsDataBase){
+                for (Animal pet:DataBase.PetsDataBase){
                     String commands="";
-                    for (String com:pet.commondsList){
+                    for (String com:pet.commands){
                         commands=commands+com+",";
                     }
                     commands=commands.substring(0,commands.length()-1);
-                    writer.write(pet.getPet().getId()+"/"
-                                    +pet.getPet().getName()+"/"
-                                    +pet.getPet().getAnimalType()+"/"
+                    writer.write(pet.getId()+"/"
+                                    +pet.getName()+"/"
+                                    +pet.getAnimalType()+"/"
                                     +commands
                                     +"\n"
                                 );

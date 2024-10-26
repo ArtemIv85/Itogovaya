@@ -2,10 +2,11 @@ package Model.impl;
 
 import Model.Animal;
 
-public class Camel extends PackedAnimal{
+import java.util.List;
 
-    public Camel(int id, String name,String type) {
+public class Camel extends Animal{
 
-        super(id, name, type);
+    public Camel(int id, String name, String animalType, List<String> commands) {
+        super(id, name, animalType, commands);
     }
 }

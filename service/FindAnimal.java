@@ -1,5 +1,6 @@
 package service;
 
+import Model.Animal;
 import Model.db.DataBase;
 import Model.db.PetInDb;
 
@@ -7,12 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FindAnimal {
-    public static List<PetInDb> Find(int id, String Name){
-        List<PetInDb> PetList = new ArrayList<>();
+    public static List<Animal> Find(int id, String Name){
+        List<Animal> PetList = new ArrayList<>();
         int findcount=0;
         if (id!=0){//Поиск по ID
-            for (PetInDb pet:DataBase.PetsDataBase) {
-                if (pet.getPet().getId()==id) {
+            for (Animal pet:DataBase.PetsDataBase) {
+                if (pet.getId()==id) {
                     PetList.add(pet);
                     findcount++;
                 }
@@ -20,8 +21,8 @@ public class FindAnimal {
 
         }
         else {//Поиск по имени без учета регистра
-            for (PetInDb pet:DataBase.PetsDataBase){
-                if (pet.getPet().getName().toLowerCase().contains(Name.toLowerCase())){
+            for (Animal pet:DataBase.PetsDataBase){
+                if (pet.getName().toLowerCase().contains(Name.toLowerCase())){
                     PetList.add(pet);
                     findcount++;
                 }

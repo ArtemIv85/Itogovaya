@@ -14,9 +14,12 @@ public class menu {
     public void start() {
 
 
+
+
+
 //        System.out.println("Количество животных в базе: "+ Counter.contpets);
-//        //System.out.println(DataBase.PetsDataBase.get(1).getCommondsList().add());
-//        DataBase.PetsDataBase.get(1).AddCommand(1,"sdfsdgsgsdg");
+//        System.out.println(DataBase.PetsDataBase.get(1));
+//        DataBase.PetsDataBase.get(1).AddCommand("sdfsdgsgsdg");
 
         while (true) {
             Scanner scanner = new Scanner(System.in);

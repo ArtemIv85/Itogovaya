@@ -1,13 +1,13 @@
 package Model.impl;
 
-public class Dog extends HomeAnimal {
+import Model.Animal;
+
+import java.util.List;
+
+public class Dog extends Animal {
     private static String Animaltype = "Собака";
-    public Dog(int id,String Name,String type){
-        super(id,Name,type);
 
-    }
-
-    public static String getAnimaltype() {
-        return Animaltype;
+    public Dog(int id, String name, String animalType, List<String> commands) {
+        super(id, name, animalType, commands);
     }
 }

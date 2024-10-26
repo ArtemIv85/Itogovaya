@@ -1,9 +1,13 @@
 package Model.impl;
 
-public class Hamster extends HomeAnimal{
-    private static String Animaltype = "Хомяк";
-    public Hamster(int id, String name,String type){
+import Model.Animal;
 
-        super(id, name,type);
+import java.util.List;
+
+public class Hamster extends Animal {
+    private static String Animaltype = "Хомяк";
+
+    public Hamster(int id, String name, String animalType, List<String> commands) {
+        super(id, name, animalType, commands);
     }
 }
