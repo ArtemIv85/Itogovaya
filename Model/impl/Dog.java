@@ -1,13 +1,14 @@
 package Model.impl;
 
-import Model.Animal;
+//import Model.Animal;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Dog extends Animal {
+public class Dog extends HomeAnimal {
     private static String Animaltype = "Собака";
 
-    public Dog(int id, String name, String animalType, List<String> commands) {
-        super(id, name, animalType, commands);
+    public Dog(int id, String name, String type, ArrayList<String> commands) {
+        super(id, name, type, commands);
     }
 }

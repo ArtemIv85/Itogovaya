@@ -2,11 +2,18 @@ package Model.impl;
 
 import java.util.ArrayList;
 
-public class Pet {
+public class Animal {
     int id;
     String name;
-    String type;
+    String AnimalType;
     ArrayList<String> commands = new ArrayList<>();
+
+    public Animal(int id, String name, String type, ArrayList<String> commands) {
+        this.id = id;
+        this.name = name;
+        this.AnimalType = type;
+        this.commands = commands;
+    }
 
     public int getId() {
         return id;
@@ -24,12 +31,12 @@ public class Pet {
         this.name = name;
     }
 
-    public String getType() {
-        return type;
+    public String getAnimalType() {
+        return AnimalType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setAnimalType(String type) {
+        this.AnimalType = type;
     }
 
     public ArrayList<String> getCommands() {
@@ -48,9 +55,9 @@ public class Pet {
         return "Pet{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", type='" + type + '\'' +
+                ", type='" + AnimalType + '\'' +
                 ", commands=" + commands +
-                '}';
+                "}\n";
     }
 }
 

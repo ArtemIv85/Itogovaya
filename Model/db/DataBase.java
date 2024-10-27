@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import Model.Animal;
+//import Model.Animal;
 import Model.impl.*;
 import controller.Counter;
 
@@ -13,7 +13,7 @@ import controller.Counter;
 public class DataBase {
     public  static List<Animal> PetsDataBase = new ArrayList<>();
     public  static int animalLastId=0;
-    public static List<Pet> DataList = new ArrayList<>();
+    //public static List<Pet> DataList = new ArrayList<>();
 
 /*
 Структура данных
@@ -21,7 +21,7 @@ Pet                                             Commonds (Lis<String>)
 int id  String name   String Type              ArrayList<String>
  */
     public static void LoadDB() {
-
+/*
         Pet dog2 = new Pet();
         dog2.setId(1);
         dog2.setName("Песик");
@@ -34,7 +34,7 @@ int id  String name   String Type              ArrayList<String>
         dog3.setType("Собака");
         dog3.AddCommans("Сидеть");
         DataList.add(dog3);
-
+*/
 
 
         BufferedReader reader = null;
@@ -53,27 +53,27 @@ int id  String name   String Type              ArrayList<String>
 
                 switch (Integer.parseInt(AnimalType)) {
                     case 1 -> {// 1 - Кошка
-                        Animal pet = new Cat(id,Name,AnimalType,commans);
+                        Animal pet = new Cat(id,Name,AnimalType,ListToArrayList(commans));
                         DataBase.PetsDataBase.add(pet);
                     }
                     case 2 -> {//2 - Собака
-                        Animal pet = new Dog(id,Name,AnimalType,commans);
+                        Animal pet = new Dog(id,Name,AnimalType,ListToArrayList(commans));
                         DataBase.PetsDataBase.add(pet);
                     }
                     case 3 -> {// 3 - Хомяк
-                        Animal pet = new Hamster(id,Name,AnimalType,commans);
+                        Animal pet = new Hamster(id,Name,AnimalType,ListToArrayList(commans));
                         DataBase.PetsDataBase.add(pet);
                     }
                     case 4 -> {//4 - Лошадь
-                        Animal pet = new Horse(id,Name,AnimalType,commans);
+                        Animal pet = new Horse(id,Name,AnimalType,ListToArrayList(commans));
                         DataBase.PetsDataBase.add(pet);
                     }
                     case 5 -> {// 5 - Верблюд
-                        Animal pet = new Camel(id,Name,AnimalType,commans);
+                        Animal pet = new Camel(id,Name,AnimalType,ListToArrayList(commans));
                         DataBase.PetsDataBase.add(pet);
                     }
                     case 6 -> { // 6 - Осел
-                        Animal pet = new Donkey(id,Name,AnimalType,commans);
+                        Animal pet = new Donkey(id,Name,AnimalType,ListToArrayList(commans));
                         DataBase.PetsDataBase.add(pet);
                     }
 
@@ -98,7 +98,11 @@ int id  String name   String Type              ArrayList<String>
 
     }// конец LoadDB
 
-
+public static ArrayList<String> ListToArrayList(List<String> list){
+        ArrayList<String> array = new ArrayList<>();
+        for (String str:list) array.add(str);
+        return array;
+}
 
 
     public static void SaveDB(){
@@ -113,7 +117,7 @@ int id  String name   String Type              ArrayList<String>
 
                 for (Animal pet:DataBase.PetsDataBase){
                     String commands="";
-                    for (String com:pet.commands){
+                    for (String com:pet.getCommands()){
                         commands=commands+com+",";
                     }
                     commands=commands.substring(0,commands.length()-1);

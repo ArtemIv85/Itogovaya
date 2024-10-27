@@ -1,17 +1,13 @@
 package service;
 
-import Model.Animal;
+//import Model.Animal;
 import Model.db.DataBase;
-import Model.db.PetInDb;
 import Model.impl.*;
 import controller.Counter;
-import view.menu;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class AnimalService {
 
@@ -29,7 +25,7 @@ public class AnimalService {
 
                 List<String> commands = new ArrayList<>();//создаем список команд
                 commands = AddCommands(commands); //заполняем список команд
-                Animal pet = new Cat(id, name,"1",commands);//создаем кошку
+                Animal pet = new Cat(id, name,"1",DataBase.ListToArrayList(commands));//создаем кошку
                 DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
 
                 System.out.println("Вы добавили: ");
@@ -45,7 +41,7 @@ public class AnimalService {
 
                 List<String> commands = new ArrayList<>();//создаем список команд
                 commands = AddCommands(commands); //заполняем список команд
-                Animal pet = new Dog(id, name,"2",commands);//создаем Собаку
+                Animal pet = new Dog(id, name,"2",DataBase.ListToArrayList(commands));//создаем Собаку
                 DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
 
                 System.out.println("Вы добавили: ");
@@ -61,7 +57,7 @@ public class AnimalService {
 
                 List<String> commands = new ArrayList<>();//создаем список команд
                 commands = AddCommands(commands); //заполняем список команд
-                Animal pet = new Hamster(id, name,"3",commands);//создаем Хомяка
+                Animal pet = new Hamster(id, name,"3",DataBase.ListToArrayList(commands));//создаем Хомяка
                 DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
 
                 System.out.println("Вы добавили: ");
@@ -77,7 +73,7 @@ public class AnimalService {
 
                 List<String> commands = new ArrayList<>();//создаем список команд
                 commands = AddCommands(commands); //заполняем список команд
-                Animal pet = new Horse(id, name,"4",commands);//создаем Лошадь
+                Animal pet = new Horse(id, name,"4",DataBase.ListToArrayList(commands));//создаем Лошадь
                 DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
 
                 System.out.println("Вы добавили: ");
@@ -93,7 +89,7 @@ public class AnimalService {
 
                 List<String> commands = new ArrayList<>();//создаем список команд
                 commands = AddCommands(commands); //заполняем список команд
-                Animal pet = new Camel(id, name,"5",commands);//создаем Верблюда
+                Animal pet = new Camel(id, name,"5",DataBase.ListToArrayList(commands));//создаем Верблюда
                 DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
 
                 System.out.println("Вы добавили: ");
@@ -109,7 +105,7 @@ public class AnimalService {
 
                 List<String> commands = new ArrayList<>();//создаем список команд
                 commands = AddCommands(commands); //заполняем список команд
-                Donkey pet = new Donkey(id, name,"6",commands);//создаем Осла
+                Animal pet = new Donkey(id, name,"6",DataBase.ListToArrayList(commands));//создаем Осла
                 DataBase.PetsDataBase.add(pet);//добавляем в базу данных питомца с командами
 
                 System.out.println("Вы добавили: ");
@@ -144,9 +140,9 @@ public void EditAnimal(int petId){
                             }
 
                             case 2 -> { // Изменения списка команд
-                                List<String> petcommands = pet.commands;
-                                pet.commands = AddCommands(petcommands);
-                                System.out.println(pet.commands);
+                                List<String> petcommands = pet.getCommands();
+                                pet.setCommands(DataBase.ListToArrayList(AddCommands(petcommands)));
+                                System.out.println(pet.getCommands());
 
                             }
 

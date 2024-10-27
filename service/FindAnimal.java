@@ -1,8 +1,8 @@
 package service;
 
-import Model.Animal;
+//import Model.Animal;
 import Model.db.DataBase;
-import Model.db.PetInDb;
+import Model.impl.Animal;
 
 import java.util.ArrayList;
 import java.util.List;

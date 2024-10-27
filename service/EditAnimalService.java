@@ -1,13 +1,10 @@
 package service;
 
-import Model.Animal;
+//import Model.Animal;
 import Model.db.DataBase;
-import Model.db.PetInDb;
-import view.CreatAnimalMenu;
-import view.FindAnimalMenu;
+import Model.impl.Animal;
 import view.menu;
 
-import javax.sound.midi.Soundbank;
 import java.util.Scanner;
 
 public class EditAnimalService {
@@ -27,29 +24,35 @@ public class EditAnimalService {
                         System.out.println("3 - Удалить команду");
                         System.out.println("4 - Вернуться в главное меню");
                         switch (scanner.nextInt()) {
+
                             case 1 -> {//Изменение имени
                                 Scanner sc2 = new Scanner(System.in);
                                 System.out.println("Введите новое имя животного: ");
                                 pet.setName(sc2.nextLine());
+                                new menu().start();
                             }
                             case 2 -> {//Добавление команды
-                                System.out.println("Изученные команды: " + pet.commands);
+                                System.out.println("Изученные команды: " + pet.getCommands());
 
                                 Scanner sc3 = new Scanner(System.in);
                                 System.out.println("Введите новую команду: ");
-                                pet.commands.add(sc3.nextLine());
+                                pet.getCommands().add(sc3.nextLine());
+                                System.out.println("Команда добавлена.");
+                                new menu().start();
                             }
                             case 3 -> {//Удаление команды
                                 //Вывод изученых команд с нумерацией
                                 int index = -1;
-                                for (int i = 0; i < pet.commands.size(); i++) {
-                                    System.out.println(i + " - " + pet.commands.get(i));
+                                for (int i = 0; i < pet.getCommands().size(); i++) {
+                                    System.out.println(i + " - " + pet.getCommands().get(i));
                                 }
                                 // конец вывода команд
                                 Scanner sc4 = new Scanner(System.in);
                                 System.out.println("Укажите номер команды, которую надо удалить");
                                 try {
-                                    pet.commands.remove(scanner.nextInt());
+                                    pet.getCommands().remove(scanner.nextInt());
+                                    System.out.println("Команда удалена.");
+                                    new menu().start();
                                 } catch (Exception e) {
                                     System.out.println("Неправильный номер команды");
                                 }

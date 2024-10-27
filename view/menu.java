@@ -1,6 +1,6 @@
 package view;
 
-import Model.Animal;
+//import Model.Animal;
 import Model.db.DataBase;
 import Model.impl.*;
 import controller.Counter;
